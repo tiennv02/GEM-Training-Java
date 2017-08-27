@@ -2,17 +2,22 @@
 
 Hibernate cung cấp các Fetcher hỗ trợ việc lấy thông tin từ cơ sở dữ liệu. Cài đặt fetcher bằng các đánh dấu java annotation hoặc bằng file cấu hình xml.
 Quan hệ cha con trong cơ sở dữ liệu có thể hiểu là quan hệ 1 – n (một cha có nhiều con).
+
 Ta có 2 tuỳ chọn FetcherType ở đây:
-## FercherType.LAZY:  Chế độ LAZY được đặt mặc định khi cài đặt. Khi một session gọi đến một đối tượng thì chỉ đối tượng đó được gọi ra trong bộ nhớ, khi Session kết thúc, không có đối tượng liên quan nào đc gọi thêm.
-## FetcherType.EAGER:  Chế độ EAGER được cài đặt khi ta cần gọi lên đối tượng nào đó, hệ thống sẽ gọi luôn các quan hệ và các đối tượng liên quan. Hay nói các khác, khi Session đóng lại ta vẫn có thể thực hiện các công việc với các đối tượng được gọi lên mà không cần mở thêm Session hay để một Session mở quá lâu.
+## FercherType.LAZY:  
+Chế độ LAZY được đặt mặc định khi cài đặt. Khi một session gọi đến một đối tượng thì chỉ đối tượng đó được gọi ra trong bộ nhớ, khi Session kết thúc, không có đối tượng liên quan nào đc gọi thêm.
+## FetcherType.EAGER:  
+Chế độ EAGER được cài đặt khi ta cần gọi lên đối tượng nào đó, hệ thống sẽ gọi luôn các quan hệ và các đối tượng liên quan. Hay nói các khác, khi Session đóng lại ta vẫn có thể thực hiện các công việc với các đối tượng được gọi lên mà không cần mở thêm Session hay để một Session mở quá lâu.
 
 
 # CascadeType
 
 Tương tự như FetchType, Cascade cũng hỗ trợ việc truy từ cơ sở dữ liệu. Ta có thể cài đặt Fetcher bằng đánh dấu java annotation hoặc bằng file cấu hình xml.
 Cascade được đặt mặc định là NONE. Tức là các thay đổi ở đối tượng cha sẽ tự không ảnh hưởng đối với các đối tượng con.
-## CascadeType.ALL: Các thay đổi ở đối tượng cha sẽ tự động được áp dụng đối với đối tượng con, ví dụ: thêm một bản ghi vào cha, các bản ghi ở con cũng sẽ được thêm vào. Ngoài ra còn có các tuỳ chọn riêng rẽ DELETE, SAVE, PERSIS,… cũng tương tự như ALL
-## CascadeType.DETACH: Ngắt quan hệ giữa 2 đối tượng cha-con trong cơ sở dữ liệu, hay nói cách khác, nó sẽ vô hiệu hoá khoá ngoài của 2 bảng. Như vậy sau khi thực hiện một thay đổi liên quan đến quan hệ cha-con mà ta không cần thiết giữ quan hệ đó cho các thao tác sau, ta sẽ dùng DETACH.
+## CascadeType.ALL: 
+Các thay đổi ở đối tượng cha sẽ tự động được áp dụng đối với đối tượng con, ví dụ: thêm một bản ghi vào cha, các bản ghi ở con cũng sẽ được thêm vào. Ngoài ra còn có các tuỳ chọn riêng rẽ DELETE, SAVE, PERSIS,… cũng tương tự như ALL
+## CascadeType.DETACH: 
+Ngắt quan hệ giữa 2 đối tượng cha-con trong cơ sở dữ liệu, hay nói cách khác, nó sẽ vô hiệu hoá khoá ngoài của 2 bảng. Như vậy sau khi thực hiện một thay đổi liên quan đến quan hệ cha-con mà ta không cần thiết giữ quan hệ đó cho các thao tác sau, ta sẽ dùng DETACH.
 
 # CACHE
 
