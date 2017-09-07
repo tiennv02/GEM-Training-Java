@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!--DI Employee by Setter-->
+	<bean id="emSet" name="em" class="com.javatpoint.Employee" scope="singleton" >
+		<property name="id"><value>58</value></property>
+		<property name="name"><value>Nguyen Huu Tu</value></property>
+		<property name="city"><value>Nghe An</value></property>
+		<!--<property name="phone"><value>01647471456</value></property>-->
+	</bean>
+
+	<!--DI Employee by Constructor-->
+	<bean id="emCons" class="com.javatpoint.Employee" scope="prototype">
+		<constructor-arg><value type="java.lang.String">AAAAAA</value></constructor-arg>
+		<constructor-arg><value type="int">59</value></constructor-arg>
+		<constructor-arg><value>Nam Dinh</value></constructor-arg>
+		<constructor-arg><value></value></constructor-arg>
+	</bean>
+
+	<bean id="emCons1" class="com.javatpoint.Employee" scope="prototype">
+		<constructor-arg><value type="int"></value></constructor-arg>
+	</bean>
+
+	<!--DI office by Setter-->
+	<bean id="offSet"  class="com.javatpoint.Office">
+		<property name="id"><value>10</value></property>
+		<property name="name"><value>Handico</value></property>
+		<property name="address"><value>Me Tri</value></property>
+	</bean>
+
+	<!--DI office by Constructor-->
+	<bean id=" offCons" class="com.javatpoint.Office">
+		<constructor-arg value="12" type="int"></constructor-arg>
+		<constructor-arg value="GEM"></constructor-arg>
+		<constructor-arg value="Handico"></constructor-arg>
+	</bean>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<!--DI Samsung by Setter-->
+	<bean id="mb1" class="com.javatpoint.Samsung.Mobile">
+		<property name="name"><value>Galaxy</value></property>
+		<property name="model"><value>J5</value></property>
+	</bean>
+	<bean name="tv1" class="com.javatpoint.Samsung.TV">
+		<property name="name"><value>LCD</value></property>
+		<property name="size"><value>43</value></property>
+	</bean>
+	<bean name="ss1" id="ss1" class="com.javatpoint.Samsung.Samsung">
+		<property name="address"><value>Ha Noi</value></property>
+		<property name="mb"><ref bean="mb1"/> </property>
+		<property name="tv"><ref bean="tv1"/> </property>
+	</bean>
+
+	<!--DI Samsung by Constructor-->
+	<bean name="mb2" class="com.javatpoint.Samsung.Mobile">
+		<constructor-arg value="Galaxy"></constructor-arg>
+		<constructor-arg value="J3"></constructor-arg>
+	</bean>
+	<bean name="tv2" class="com.javatpoint.Samsung.TV">
+		<constructor-arg value="4K"></constructor-arg>
+		<constructor-arg value="32"></constructor-arg>
+	</bean>
+	<bean name="ss2" class="com.javatpoint.Samsung.Samsung">
+		<constructor-arg value="NgheAn"></constructor-arg>
+		<constructor-arg ref="mb2"></constructor-arg>
+		<constructor-arg ref="tv2"></constructor-arg>
+	</bean>
+
+</beans>
